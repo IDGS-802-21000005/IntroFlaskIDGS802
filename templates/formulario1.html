@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+
+{%block content %} 
+<h1>
+    Super calculadora que solo hace multiplicaciones
+  </h1>
+
+<form action="/resultado" method="POST">
+    <label >N1:</label>
+    <input type="number" name="n1"/>
+    <br>
+    <br>
+    <label >N2:</label>
+    <input type="number" name="n2"/>
+    <br><br>
+    <input type="submit" value="Calcular"/>
+    
+</form>
+{%endblock%}
