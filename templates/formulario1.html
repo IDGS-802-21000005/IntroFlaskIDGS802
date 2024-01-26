@@ -1,20 +1,26 @@
-{% extends "layout.html" %}
+{% extends "layout2.html" %}
 
 
 {%block content %} 
 <h1>
-    Super calculadora que solo hace multiplicaciones
+    Calculadora basica
   </h1>
 
 <form action="/resultado" method="POST">
     <label >N1:</label>
     <input type="number" name="n1"/>
     <br>
-    <br>
+    
     <label >N2:</label>
     <input type="number" name="n2"/>
     <br><br>
     <input type="submit" value="Calcular"/>
     
 </form>
+
+
+
+{% if resultado %}
+    <h1>El resultado es {{ resultado }}</h1>
+{% endif %}
 {%endblock%}
