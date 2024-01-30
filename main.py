@@ -1,4 +1,5 @@
 from flask import Flask, request,render_template
+import forms
 app = Flask(__name__)
 
 @app.route("/")
@@ -9,9 +10,21 @@ def index():
 def maestros():
     return render_template("maestros.html")
 
-@app.route("/alumnos")
+@app.route("/alumnos",methods=["GET","POST"])
 def alumnos():
-    return render_template("alumnos.html")
+    alumnos_form=forms.UserForm(request.form)
+    nom=""
+    apaterno=""
+    correo=""
+    if request.method == "POST":
+        nom=alumnos_form.nombre.data
+        apaterno=alumnos_form.apaterno.data
+        correo=alumnos_form.email.data
+        print(f"nombre:{nom}")
+        print(f"nombre:{apaterno}")
+        print(f"nombre:{correo}")
+    return render_template("alumnos.html", form=alumnos_form, nom=nom)
+    
 
 def hola():
     return "<p> Hola Mundo</p>"
@@ -70,6 +83,7 @@ def mult2():
             return f"<h1>El resultado es  {str(int(num1)*int(num2))}</h1>"
         else:
             pass
+
 
 
 
