@@ -24,7 +24,6 @@ def alumnos():
         print(f"nombre:{apaterno}")
         print(f"nombre:{correo}")
     return render_template("alumnos.html", form=alumnos_form, nom=nom)
-    
 
 def hola():
     return "<p> Hola Mundo</p>"
@@ -71,6 +70,7 @@ def mul():
                     </form>
                     
                     '''
+
 @app.route("/formulario1")
 def calculo():
     return render_template("formulario1.html")
@@ -84,7 +84,24 @@ def mult2():
         else:
             pass
 
-
+@app.route("/alum",methods=["GET","POST"])
+def alum():
+    alumnos_form=forms.UsersForm(request.form)
+    nom=""
+    apaterno=""
+    amaterno=""
+    edad=""
+    correo=""
+    if request.method == "POST" and alumnos_form.validate():
+        nom=alumnos_form.nombre.data
+        apaterno=alumnos_form.apaterno.data
+        amaterno=alumnos_form.amaterno.data
+        edad=alumnos_form.edad.data
+        correo=alumnos_form.correo.data
+        print(f"nombre:{nom}")
+        print(f"nombre:{apaterno}")
+        print(f"nombre:{correo}")
+    return render_template("alumnos.html", form=alumnos_form, nom=nom, apa=apaterno, ama=amaterno, edad=edad, correo=correo)
 
 
 if __name__ == "__main__":
