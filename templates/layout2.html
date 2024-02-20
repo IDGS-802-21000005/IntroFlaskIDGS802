@@ -13,37 +13,35 @@
     <script src="../static/bootstrap/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark"
-    >
-      <div style="display: grid; width: 90vw; ">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div style="display: grid; width: 90vw">
         <a class="navbar-brand" href="#">IDGS802</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Usuarios</a>
-          </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Usuarios</a>
+            </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Alumnos</a>
-          </li>
-        </ul>
-      </div>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Alumnos</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div
@@ -57,20 +55,12 @@
         width: 100vw;
       "
     >
-      <div
-        class="container"
-        style="
-          background-color: rgb(226, 226, 226);
-          border-radius: 4px;
-          margin: 10px 2px;
-          padding: 20px;
-          width: 90vw;
-          display: grid;
-          align-content: center;
-          justify-content: center;
-        "
-      >
-        {%block content %} {%endblock%}
+      <div class="container">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <div class="alert alert-succes">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock
+        %}
       </div>
     </div>
   </body>
